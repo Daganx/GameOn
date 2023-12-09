@@ -418,7 +418,6 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  height: 657px;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
