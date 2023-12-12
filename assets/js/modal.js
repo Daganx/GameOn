@@ -46,7 +46,7 @@ const btnSubmit = document.getElementsByClassName("btn-submit");
 
 function verifFirst(input){
   const regExpText = new RegExp("^[A-Za-zéèê\-]+$");
-  if(regExpText.test(input.value) && input.length <= 2){
+  if(regExpText.test(input.value)){
     console.log("PRENOM OK");
   } else {
     console.log("PRENOM ERROR")
@@ -57,7 +57,7 @@ function verifFirst(input){
 
 function verifLast(input){
   const regExpText = new RegExp("^[A-Za-zéèê\-]+$");
-  if(regExpText.test(input.value) && input.length <= 2){
+  if(regExpText.test(input.value)){
     console.log("NOM OK");
   } else {
     console.log("NOM ERROR")
