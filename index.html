@@ -3,10 +3,9 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/modal.css">
-    <link rel="javascript" href="assets/js/modal.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/modal.css">
     <title>Reservation</title>
   </head>
   <body>
@@ -14,7 +13,6 @@
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
         <img alt="logo de GameOn" src="assets/img/Logo.png" /> 
-        <!-- CSS Du logo a enlever -->
       </div>
 
       <div class="main-navbar">
@@ -23,7 +21,7 @@
         <a href="#"><span>À propos</span></a>
         <a href="#"><span>Contact</span></a>
         <a href="#"><span>Évènements passés</span></a>
-        <a href="javascript:void(0);" class="icon" onclick="editNav()">
+        <a href="#" class="icon">
           <!-- Dans un fichier Séparé -->
           <i class="fa fa-bars"></i>
         </a>
@@ -58,33 +56,33 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
-            <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
+            <form name="reserve" action="index.html" method="get">
               <div class="formData">
-                <label>Prénom</label>
+                <label for="first">Prénom</label>
                 <br>
-                <input class="text-control" type="text" id="first" name="first" minlength="2"/>
+                <input class="text-control" type="text" id="first" name="first"/>
                 <br>
               </div>
               <div class="formData">
-                <label>Nom</label>
+                <label for="last">Nom</label>
                 <br>
                   <input class="text-control" type="text" id="last" name="last"/>
                 <br>
               </div>
               <div class="formData">
-                <label>E-mail</label>
+                <label for="email">E-mail</label>
                 <br>
                   <input class="text-control" type="email" id="email" name="email"/>
                 <br>
               </div>
               <div class="formData">
-                <label>Date de naissance</label>
+                <label for="birthdate">Date de naissance</label>
                 <br>
                   <input class="text-control" type="date" id="birthdate" name="birthdate"/>
                 <br>
               </div>
               <div class="formData">
-                <label>À combien de tournois GameOn avez-vous déjà participé ?</label>
+                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label>
                 <br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
