@@ -53,13 +53,7 @@ function checkFirst(input) {
     if (errorMessageFirst){
       return false; 
     }
-    const errorElement = document.createElement('div');
-    errorElement.id = 'firstNameError';
-    errorElement.classList.add('error-message');
-    errorElement.textContent = 'Le prénom doit avoir au moins 2 caractères et ne doit contenir que des lettres.';
-    input.parentNode.appendChild(errorElement);
-    errorMessageFirst = errorElement; 
-    return false;
+    createErrorMsgFirst(input);
   }
 };
 
@@ -76,13 +70,7 @@ function checkLast(input){
     if (errorMessageLast){
       return false;
     }
-    const errorElement = document.createElement('div');
-    errorElement.id = 'lastNameError';
-    errorElement.classList.add('error-message');
-    errorElement.textContent = 'Le nom doit contenir aux moins 2 caractères et ne doit contenir que des lettres.';
-    input.parentNode.appendChild(errorElement);
-    errorMessageLast = errorElement;
-    return false;
+    createErrorMsgLast(input);
   }
 };
 
@@ -99,13 +87,7 @@ function checkEmail(input){
     if (errorMessageEmail){
       return false;
     }
-    const errorElement = document.createElement('div');
-    errorElement.id = 'emailError';
-    errorElement.classList.add('error-message');
-    errorElement.textContent = "Veuillez rentrer une adresse e-mail valide.";
-    input.parentNode.appendChild(errorElement);
-    errorMessageEmail = errorElement; 
-    return false;
+    createErrorMsgEmail(input);
   }
 };
 
@@ -125,15 +107,10 @@ function checkAge(input){
     if (errorMessageAge){
       return false;
     }
-    const errorElement = document.createElement('div');
-    errorElement.id = 'ageError';
-    errorElement.classList.add('error-message');
-    errorElement.textContent = "Vous devez avoir 12 ans minimum pour participer.";
-    input.parentNode.appendChild(errorElement);
-    errorMessageAge = errorElement; 
-    return false;
+    createErrorMsgAge(input);
   }
 };
+
 function checkParticipation(input){
   const value = parseInt(input.value, 10);
   if(!isNaN(value) && value >= 0 && value <= 10){
@@ -148,13 +125,7 @@ function checkParticipation(input){
     if (errorMessageParticipation){
       return false;
     }
-    const errorElement = document.createElement('div');
-    errorElement.id = 'participationError';
-    errorElement.classList.add('error-message');
-    errorElement.textContent = "Nombre minimum : 0, Nombre maximum : 10.";
-    input.parentNode.appendChild(errorElement);
-    errorMessageParticipation = errorElement; 
-    return false;
+    createErrorMsgParticipation(input);
   }
 };
 
@@ -173,12 +144,7 @@ function checkLocation() {
     }
   } else {
     if (!errorMessageLocation) {
-      const errorElement = document.createElement('div');
-      errorElement.id = 'locationError';
-      errorElement.classList.add('error-message');
-      errorElement.textContent = 'Veuillez sélectionner une location.';
-      document.getElementById('formDataLocation').appendChild(errorElement);
-      errorMessageLocation = errorElement;
+      createErrorMsgLocation(document);
     }
   }
   return isSelected;
@@ -195,17 +161,79 @@ function checkConditions() {
   } else {
     console.log("Veuillez accepter les conditions d'utilisation pour vous inscrire.");
     if (!errorMessageConditions) {
-      const errorElement = document.createElement('div');
+      createErrorMsgConditions(document);
+    }
+    return false;
+  }
+};
+// Functions Msg Create : 
+function createErrorMsgFirst(input){
+  const errorElement = document.createElement('div');
+    errorElement.id = 'firstNameError';
+    errorElement.classList.add('error-message');
+    errorElement.textContent = 'Le prénom doit avoir au moins 2 caractères et ne doit contenir que des lettres.';
+    input.parentNode.appendChild(errorElement);
+    errorMessageFirst = errorElement; 
+    return false;
+};
+
+function createErrorMsgLast (input){
+  const errorElement = document.createElement('div');
+    errorElement.id = 'lastNameError';
+    errorElement.classList.add('error-message');
+    errorElement.textContent = 'Le nom doit contenir aux moins 2 caractères et ne doit contenir que des lettres.';
+    input.parentNode.appendChild(errorElement);
+    errorMessageLast = errorElement;
+    return false;
+};
+
+function createErrorMsgEmail(input){
+  const errorElement = document.createElement('div');
+    errorElement.id = 'emailError';
+    errorElement.classList.add('error-message');
+    errorElement.textContent = "Veuillez rentrer une adresse e-mail valide.";
+    input.parentNode.appendChild(errorElement);
+    errorMessageEmail = errorElement; 
+    return false;
+};
+
+function createErrorMsgAge(input){
+  const errorElement = document.createElement('div');
+    errorElement.id = 'ageError';
+    errorElement.classList.add('error-message');
+    errorElement.textContent = "Vous devez avoir 12 ans minimum pour participer.";
+    input.parentNode.appendChild(errorElement);
+    errorMessageAge = errorElement; 
+    return false;
+}
+
+function createErrorMsgParticipation(input){
+  const errorElement = document.createElement('div');
+    errorElement.id = 'participationError';
+    errorElement.classList.add('error-message');
+    errorElement.textContent = "Nombre minimum : 0, Nombre maximum : 10.";
+    input.parentNode.appendChild(errorElement);
+    errorMessageParticipation = errorElement; 
+    return false;
+}
+
+function createErrorMsgLocation(){
+  const errorElement = document.createElement('div');
+      errorElement.id = 'locationError';
+      errorElement.classList.add('error-message');
+      errorElement.textContent = 'Veuillez sélectionner une location.';
+      document.getElementById('formDataLocation').appendChild(errorElement);
+      errorMessageLocation = errorElement;
+};
+
+function createErrorMsgConditions(){
+  const errorElement = document.createElement('div');
       errorElement.id = 'locationError';
       errorElement.classList.add('error-message');
       errorElement.textContent = "Veuillez accepter les conditions d'utilisation pour continuer.";
       document.getElementById('formDataConditions').appendChild(errorElement);
       errorMessageConditions = errorElement;
-    }
-    return false;
-  }
-};
-
+}
 // Submission Form :
 form.addEventListener("submit", (event) => {
   event.preventDefault();
