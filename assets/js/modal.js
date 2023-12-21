@@ -27,9 +27,8 @@ const birthdateInput = document.getElementById("birthdate");
 const participationInput = document.getElementById("quantity");
 const radioButtons = document.querySelectorAll('input[name="location"]');
 const checkboxInput = document.getElementById("checkbox1");
-const btnSubmit = document.getElementsByClassName("btn-submit");
 // Regex :
-const regExpText = new RegExp("^[A-Za-zéèê\-]+$");
+const regExpText = new RegExp("^[A-Za-zéèê\\s-]+$");
 const regExpEmail = new RegExp('^[a-z0-9.-_]+[@]{1}[a-z0-9.-_]+[.]{1}[a-z]{2,4}$');
 // Error Msg : 
 let errorMessageFirst = document.getElementById('firstNameError');
@@ -245,6 +244,8 @@ form.addEventListener("submit", (event) => {
   const isParticipationValid = checkParticipation(participationInput);
   const isLocationValid = checkLocation();
   const isConditionValid = checkConditions();
+  const messageValidation = document.getElementById('message-validation');
+  const btnClose = document.getElementById('btn-close');
 
   if (isFirstNameValid &&
       isLastNameValid &&
@@ -253,9 +254,17 @@ form.addEventListener("submit", (event) => {
       isParticipationValid &&
       isLocationValid &&
       isConditionValid) {
-    successModal.style.display = "block";
+    form.style.display = 'none';
+    messageValidation.style.display = 'block';
+    modalClose.addEventListener('click', () => {
+      location.reload();
+    })
+    btnClose.addEventListener('click', () => {
+      location.reload();
+    })
+    form.reset();
   } else {
-    return false;   
+    return false;
   }
 });
 // Events Listeners :
@@ -281,10 +290,4 @@ radioButtons.forEach(button => {
 });
 checkboxInput.addEventListener("change", () => {
   checkConditions();
-});
-// Success Modal :
-const successModal = document.getElementById('modal-success');
-const successClose = document.getElementById('success-close');
-successClose.addEventListener('click', () => {
-  successModal.style.display = 'none';
 });
