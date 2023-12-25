@@ -1,9 +1,9 @@
 // Burger Toggle :
 const menuBurger = document.querySelector(".icon");
 menuBurger.addEventListener('click', burgerToggle);
-function burgerToggle() {
-  const topNav = document.getElementById("myTopnav");
-  topNav.classList.toggle("responsive");
+function burgerToggle() { // Function toggle Burger
+  const topNav = document.getElementById("myTopnav"); // Get the element 
+  topNav.classList.toggle("responsive"); // Toggle with CSS class responsive 
 }
 // Modal Form :
 const modalbg = document.querySelector(".bground");
@@ -11,25 +11,26 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const modalClose = document.querySelector(".close");
 
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-function launchModal() {
-  modalbg.style.display = "block";
+function launchModal() { // Function Boucle Button Modal
+  modalbg.style.display = "block"; // Add Display Block CSS
 }
 modalClose.addEventListener("click", closeModal);
 function closeModal(){
-  modalbg.style.display = "none";
+  modalbg.style.display = "none"; // Add Display None
 }
 // Inputs Form:
+// VARIABLE OF INPUTS
 const form = document.querySelector('form');
 const firstNameInput = document.getElementById("first");
 const lastNameInput = document.getElementById("last");
 const emailInput = document.getElementById("email");
 const birthdateInput = document.getElementById("birthdate");
 const participationInput = document.getElementById("quantity");
-const radioButtons = document.querySelectorAll('input[name="location"]');
+const radioButtons = document.querySelectorAll('input[name="location"]'); // Use Selector ALL for Input Location
 const checkboxInput = document.getElementById("checkbox1");
 // Regex :
-const regExpText = new RegExp("^[A-Za-zéèê\\s-]+$");
-const regExpEmail = new RegExp('^[a-z0-9.-_]+[@]{1}[a-z0-9.-_]+[.]{1}[a-z]{2,4}$');
+const regExpText = new RegExp("^[A-Za-zéèê\\s-]+$"); // Text Regex
+const regExpEmail = new RegExp('^[a-z0-9.-_]+[@]{1}[a-z0-9.-_]+[.]{1}[a-z]{2,4}$'); // Mail Regex
 // Error Msg : 
 let errorMessageFirst = document.getElementById('firstNameError');
 let errorMessageLast = document.getElementById('lastNameError');
@@ -40,19 +41,19 @@ let errorMessageLocation = document.getElementById('locationError');
 let errorMessageConditions = document.getElementById('conditionsError');
 // Functions Validations :
 function checkFirst(input) {
-  if (input.value.length >= 2 && regExpText.test(input.value)){
-    console.log("First OK");
-    if (errorMessageFirst){
+  if (input.value.length >= 2 && regExpText.test(input.value)){ // Function with Parameter Input. Use of If and Else Condition
+    console.log("First OK"); // IF Value of Input is more than 2 and match the Regex enter if. and return true
+    if (errorMessageFirst){ // Condition with the ERRORMESSAGE, if true it remove the message.
       errorMessageFirst.remove();
-      errorMessageFirst = null; 
+      errorMessageFirst = null; // Value = Null to remove it.
     }
     return true;
-  } else {
+  } else { // if False. Enter Else and Return False.
     console.log("First ERROR");
-    if (errorMessageFirst){
+    if (errorMessageFirst){ // Condition if False, ERRORMESSAGE Stay
       return false; 
     }
-    createErrorMsgFirst(input);
+    createErrorMsgFirst(input); // Use of Function to create ERROR MSG (Function Below L.169)
   }
 };
 
@@ -234,10 +235,10 @@ function createErrorMsgConditions(){
       errorMessageConditions = errorElement;
 }
 // Submission Form :
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
+form.addEventListener("submit", (event) => { // AddEventListener on the form
+  event.preventDefault(); // 
 
-  const isFirstNameValid = checkFirst(firstNameInput);
+  const isFirstNameValid = checkFirst(firstNameInput); // Const Validation. Get the value of our Input. (Function Above L.43)
   const isLastNameValid = checkLast(lastNameInput);
   const isEmailValid = checkEmail(emailInput);
   const isAgeValid = checkAge(birthdateInput);
@@ -247,15 +248,15 @@ form.addEventListener("submit", (event) => {
   const messageValidation = document.getElementById('message-validation');
   const btnClose = document.getElementById('btn-close');
 
-  if (isFirstNameValid &&
+  if (isFirstNameValid && // Condition IF All Our Input are VALID 
       isLastNameValid &&
       isEmailValid && 
       isAgeValid &&
       isParticipationValid &&
       isLocationValid &&
       isConditionValid) {
-    form.style.display = 'none';
-    messageValidation.style.display = 'block';
+    form.style.display = 'none'; // Close the Form.
+    messageValidation.style.display = 'block'; // Open the modal
     modalClose.addEventListener('click', () => {
       location.reload();
     })
