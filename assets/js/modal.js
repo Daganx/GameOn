@@ -26,7 +26,7 @@ const lastNameInput = document.getElementById("last");
 const emailInput = document.getElementById("email");
 const birthdateInput = document.getElementById("birthdate");
 const participationInput = document.getElementById("quantity");
-const radioButtons = document.querySelectorAll('input[name="location"]'); // Use Selector ALL for Input Location
+const radioButtons = document.querySelectorAll('input[name="location"]'); // Use Selector ALL for Inputs Location
 const checkboxInput = document.getElementById("checkbox1");
 // Regex :
 const regExpText = new RegExp("^[A-Za-zéèê\\s-]+$"); // Text Regex
@@ -113,7 +113,7 @@ function checkAge(input){
 
 function checkParticipation(input){
   const value = parseInt(input.value, 10);
-  if(!isNaN(value) && value >= 0 && value <= 10){
+  if(!isNaN(value) && value >= 0 && value <= 10){ // If Value is different of NaN 
     console.log("Participation OK");
     if (errorMessageParticipation){
       errorMessageParticipation.remove();
@@ -167,12 +167,12 @@ function checkConditions() {
   }
 };
 // Functions Msg Create : 
-function createErrorMsgFirst(input){
-  const errorElement = document.createElement('div');
-    errorElement.id = 'firstNameError';
-    errorElement.classList.add('error-message');
-    errorElement.textContent = 'Le prénom doit avoir au moins 2 caractères et ne doit contenir que des lettres.';
-    input.parentNode.appendChild(errorElement);
+function createErrorMsgFirst(input){ // Function with input parameter
+  const errorElement = document.createElement('div'); // Create the Msg of Error 
+    errorElement.id = 'firstNameError'; // Add the id FirstNameError
+    errorElement.classList.add('error-message'); // Add the CSS Class 'error-message;
+    errorElement.textContent = 'Le prénom doit avoir au moins 2 caractères et ne doit contenir que des lettres.'; // The text displayed
+    input.parentNode.appendChild(errorElement); // Select the element to appendchild
     errorMessageFirst = errorElement; 
     return false;
 };
@@ -258,7 +258,7 @@ form.addEventListener("submit", (event) => { // AddEventListener on the form
     form.style.display = 'none'; // Close the Form.
     messageValidation.style.display = 'block'; // Open the modal
     modalClose.addEventListener('click', () => {
-      location.reload();
+      location.reload(); // Method to reload page after submission
     })
     btnClose.addEventListener('click', () => {
       location.reload();
